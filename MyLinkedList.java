@@ -231,4 +231,8 @@ public class MyLinkedList<E>{
     length = length + other.size(); //new length
     other.length = 0;
     }
+
+  public E removeFront() {
+    
+  }
 }
