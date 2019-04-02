@@ -233,6 +233,6 @@ public class MyLinkedList<E>{
     }
 
   public E removeFront() {
-    
+
   }
 }
