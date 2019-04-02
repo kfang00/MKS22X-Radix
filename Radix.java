@@ -1,24 +1,33 @@
 public class Radix{
 
   public static void radixsort(int[]data){
-    for (int a = 0; a < data.length; a++) {
-      int hold = data[0];
-      int count = 10;
-      @SuppressWarnings("unchecked")
-      MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
-      for (int b = 0 ; b < buckets.length; b ++) {
-        buckets[b] = new MyLinkedList<Integer>();
-        buckets[b].add(data[a]);
+    int hold = data[0];
+    int count = 0;
+    int idx = 0;
+    @SuppressWarnings("unchecked")
+    MyLinkedList<Integer>[] buckets = new MyLinkedList[21];
+    for (int b = 0 ; b < data.length; b ++) {
+      buckets[b] = new MyLinkedList<Integer>();
+      buckets[b].add(data[count]);
+      if (hold < Math.abs(data[count])) {
+        hold = data[count];
       }
-
-      if (hold < Math.abs(data[a])) {
-        hold = data[a];
-      }
-      //while ((hold / 10) != 0) {
-
-      //}
-System.out.println(buckets.toString());
+      count++;
     }
+    count = 10;
+    while ((hold / 10) != 0) {
+      for (int c = 0 ; c < 21; c ++) {
+	if (buckets[c].size() != 0 ) {
+	  buckets[21].extend(buckets[c]);
+        }
+      }
+      while (idx < data.length) {
+        Node h = buckets[21].get(0).next();
+        buckets[(h % count) / (count / 10)].add(h);
+      }
+    }
+System.out.println(buckets.toString2());
+     
 
   }
 

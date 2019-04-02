@@ -92,6 +92,25 @@ public class MyLinkedList<E>{
     return str + current.getData() +"]";
   }
 
+  /*public String toString2() {
+    Node current = start;
+    int a = 0;
+    int b = 0;
+    if (size() == 0) {
+      return "[]";
+    }
+    String str = "[";
+    while (a < (size() -1)) {
+      while (b < (current[a].size() - 1)) {
+      str = str + current.getData() + ", ";
+      current = current.next();
+      b++;
+      }
+      a++;
+    }
+    return str + current.getData() +"]";
+  }*/
+
   private Node nthNode(int index) {
     Node current = new Node(null, null, null);
     current = start;
@@ -232,7 +251,7 @@ public class MyLinkedList<E>{
     other.length = 0;
     }
 
-  public E removeFront() {
+  //public E removeFront() {
 
-  }
+  //}
 }
