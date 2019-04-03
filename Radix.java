@@ -18,7 +18,8 @@ public class Radix{
     while ((hold / 10) != 0) {
       for (int c = 0 ; c < 21; c ++) {
 	if (buckets[c].size() != 0 ) {
-	  buckets[21].extend(buckets[c]);
+          System.out.println(buckets[20].toString());
+	  buckets[20].extend(buckets[c]);
         }
       }
       while (buckets[20].size() != 0) {
