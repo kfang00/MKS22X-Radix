@@ -6,23 +6,19 @@ public class Radix{
     int idx = 0;
     @SuppressWarnings("unchecked")
     MyLinkedList<Integer>[] buckets = new MyLinkedList[21];
-    for (int b = 0 ; b < data.length; b ++) {
+    for (int b = 0 ; b < buckets.length; b ++) {
       buckets[b] = new MyLinkedList<Integer>();
+      if (count < data.length) {
       buckets[b].add(data[count]);
       if (hold < Math.abs(data[count])) {
         hold = data[count];
+      }
       }
       count++;
     }
     count = 10;
     while ((hold / 10) != 0) {
-      buckets[20].add(0);
-      buckets[20].reset();
       for (int c = 0 ; c < 21; c ++) {
-        if (buckets[c] == null) {
-	  buckets[c].add(0);
-  	  buckets[c].reset();
-        }
 	if (buckets[c].size() != 0 ) {
           System.out.println(buckets[20].toString());
 	  buckets[20].extend(buckets[c]);
