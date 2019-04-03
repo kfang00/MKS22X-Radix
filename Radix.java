@@ -21,12 +21,12 @@ public class Radix{
 	  buckets[21].extend(buckets[c]);
         }
       }
-      while (idx < data.length) {
-        Node h = buckets[21].get(0).next();
+      while (buckets[20].size() != 0) {
+        int h = buckets[20].removeFront();
         buckets[(h % count) / (count / 10)].add(h);
       }
     }
-System.out.println(buckets.toString2());
+System.out.println(buckets[20].toString());
      
 
   }
