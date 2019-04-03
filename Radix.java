@@ -16,13 +16,19 @@ public class Radix{
     }
     count = 10;
     while ((hold / 10) != 0) {
+      buckets[20].add(0);
+      buckets[20].reset();
       for (int c = 0 ; c < 21; c ++) {
+        if (buckets[c] == null) {
+	  buckets[c].add(0);
+  	  buckets[c].reset();
+        }
 	if (buckets[c].size() != 0 ) {
           System.out.println(buckets[20].toString());
 	  buckets[20].extend(buckets[c]);
         }
       }
-      while (buckets[20].size() != 0) {
+      while (buckets[20].size() > 1) {
         int h = buckets[20].removeFront();
         buckets[(h % count) / (count / 10)].add(h);
       }

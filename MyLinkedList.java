@@ -53,6 +53,10 @@ public class MyLinkedList<E>{
   public int size() {
     return length;
   }
+  
+  public void reset() {
+    length = 0;
+  }
 
   public boolean add(Integer value) {
     if (length == 0) {
