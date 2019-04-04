@@ -94,10 +94,10 @@ public class MyLinkedList<E>{
       a++;
     }
     //E hold = current.getData();
-    //if (hold != null) {
+    if (current.getData() != null) {
 	return str + current.getData() +"]";
-    //}
-    //return str +"]";
+    }
+    return str +"]";
   }
 
   /*public String toString2() {
