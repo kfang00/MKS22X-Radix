@@ -93,11 +93,11 @@ public class MyLinkedList<E>{
       current = current.next();
       a++;
     }
-    E hold = current.getData();
-    if (hold != null) {
+    //E hold = current.getData();
+    //if (hold != null) {
 	return str + current.getData() +"]";
-    }
-    return str +"]";
+    //}
+    //return str +"]";
   }
 
   /*public String toString2() {
