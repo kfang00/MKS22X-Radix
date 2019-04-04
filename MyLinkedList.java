@@ -2,10 +2,10 @@ import java.util.List;
 
 public class MyLinkedList<E>{
   private class Node{
-    private Integer data;
+    private E data;
     private Node next,prev;
 
-    public Node(Integer data1, Node next1, Node prev1) {
+    public Node(E data1, Node next1, Node prev1) {
 	data1 = data;
 	next1 = next;
 	prev1 = prev;
@@ -27,11 +27,11 @@ public class MyLinkedList<E>{
 	prev = other;
     }
 
-    public Integer getData() {
+    public E getData() {
 	return data;
     }
 
-    public Integer setData(Integer i) {
+    public E setData(E i) {
 	data = i;
 	return data;
     }
@@ -58,7 +58,7 @@ public class MyLinkedList<E>{
     length = 0;
   }
 
-  public boolean add(Integer value) {
+  public boolean add(E value) {
     if (length == 0) {
       start.setData(value); //if list is empty, then adding a node would mean start and end node would be equal to value
       end.setData(value);
@@ -88,12 +88,16 @@ public class MyLinkedList<E>{
       return "[]";
     }
     String str = "[";
-    while (a < (size() -1)) {
+    while ((a < (size() -1)) && (current != null)) {
       str = str + current.getData() + ", ";
       current = current.next();
       a++;
     }
-    return str + current.getData() +"]";
+    E hold = current.getData();
+    if (hold != null) {
+	return str + current.getData() +"]";
+    }
+    return str +"]";
   }
 
   /*public String toString2() {
@@ -124,29 +128,29 @@ public class MyLinkedList<E>{
     return current;
   }
 
-  public Integer get(int index) {
+  public E get(int index) {
     if (index < 0 || index >= size()) {
       throw new IndexOutOfBoundsException(); //if the index is out of range
     }
     else {
-      return nthNode(index).getData(); //Returns the element at the specified position in this list
+      return (E)nthNode(index).getData(); //Returns the element at the specified position in this list
     }
   }
 
-  public Integer set(int index,Integer value) {
+  public E set(int index,E value) {
     Node store = new Node(null, null, null);
     if (index < 0 || index >= size()) {
       throw new IndexOutOfBoundsException(); //if the index is out of range
     }
     else {
       store = nthNode(index);
-      Integer hold = store.getData();
+      E hold = (E)store.getData();
       store.setData(value); //Replaces the element at the specified position in this list with the specified element
       return hold; //the element previously at the specified position
     }
   }
 
-  public boolean contains(Integer value) {
+  public boolean contains(E value) {
     Node current = new Node(null, null, null);
     current = start;
     if (current.getData().equals(value)) {
@@ -161,7 +165,7 @@ public class MyLinkedList<E>{
     return false;
   }
 
-  public int indexOf(Integer value) {
+  public int indexOf(E value) {
     Node current = new Node(null, null, null);
     current = start;
     if (current.getData().equals(value)) {
@@ -176,7 +180,7 @@ public class MyLinkedList<E>{
     return -1; //returns -1 if this list does not contain the element
   }
 
-  public void add(int index,Integer value) {
+  public void add(int index,E value) {
     Node add = new Node(null, null, null);
     add.setData(value);
     Node store = new Node(null, null, null);
@@ -202,7 +206,7 @@ public class MyLinkedList<E>{
       length = length + 1;
     }
   }
-
+  /*
   public Integer remove(int index) {
     Node store = new Node(null, null, null);
     if (index < 0 || index >= size()) {
@@ -210,7 +214,7 @@ public class MyLinkedList<E>{
     }
     else {
       store = nthNode(index);
-      Integer hold = store.getData();
+      E hold = store.getData();
       if (size() == 1) { //if only one element
         start = new Node(null, null, null);
       }
@@ -231,20 +235,20 @@ public class MyLinkedList<E>{
     }
 
   }
-
-  public boolean remove(Integer value) {//indexOf() would also be useful
+  */
+  /*public boolean remove(Integer value) {//indexOf() would also be useful
     int idx = 0;
-    if (indexOf(value) == -1) {
+    if ((E)indexOf(value) == -1) {
       return false; //If this list does not contain the element, the list is unchanged
     }
     else {
-      idx = indexOf(value);
+      idx = (E)indexOf(value);
       remove(idx); //Removes the first occurrence of the specified element from this list, if it is present
       return true; //true if this list contained the specified element
     }
-  }
+  }*/
 
-  public void extend(MyLinkedList other){
+  public void extend(MyLinkedList<E> other){
         //in O(1) runtime, move the elements from other onto the end of this
         //The size of other is reduced to 0
         //The size of this is now the combined sizes of both original lists
@@ -262,10 +266,11 @@ public class MyLinkedList<E>{
     other.length = 0;
     }
 
-  public Integer removeFront() {
+  public E removeFront() {
     Node hold = start;
     start = start.next();
     start.setPrev(null);
+    length = length - 1;
     return hold.getData();
   }
 }
