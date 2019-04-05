@@ -268,8 +268,10 @@ public class MyLinkedList<E>{
 
   public E removeFront() {
     Node hold = start;
+    if (size() > 1) {
     start = start.next();
-    start.setPrev(null);
+    }
+    //start.setPrev(null);
     length = length - 1;
     return hold.getData();
   }
