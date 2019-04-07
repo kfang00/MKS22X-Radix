@@ -58,12 +58,13 @@ public class MyLinkedList<E>{
     length = 0;
   }
 
-  public boolean add(E value) {
-    if (length == 0) {
-      start.setData(value); //if list is empty, then adding a node would mean start and end node would be equal to value
-      end.setData(value);
+  /*public boolean add(E value) {
+    if (size() == 0) {
+      start.setData(value);
+      //start = new Node(value, null, null); //if list is empty, then adding a node would mean start and end node would be equal to value
+      end = start;
     }
-    else if (length == 1) {
+    else if (size() == 1) {
       Node add = new Node(null, null, null);
       add.setData(value);
       add.setPrev(start);
@@ -79,6 +80,21 @@ public class MyLinkedList<E>{
     }
     length = length + 1;
     return true;
+  }*/
+
+public boolean add(E value) {
+    if (length == 0) {
+      end = new Node(value, null, null) ;
+      start = end ;
+      length++ ;
+    }
+    else {
+      Node nextNode = new Node(value, end, null) ;
+      end.setNext(nextNode) ;
+      end = end.next() ;
+      length++ ;
+    }
+    return true ;
   }
 
   public String toString() {
@@ -274,13 +290,25 @@ public class MyLinkedList<E>{
   public E removeFront() {
     Node hold = start;
     //length = length - 1;
-    if (size() > 0) {
-    start = start.next();
-    length = length - 1;
-    
+    if (size() > 1) {
+      start = start.next();
+      length = length - 1;
+      
+    }
+    else {
+      length = length - 1;
     }
     return hold.getData();
     //start.setPrev(null);
 
   }
+ 
+
+  public void clear(){
+    length = 0;
+    start = new Node(null, null, null);
+    end = new Node(null, null, null);;
+  }
+
+
 }
