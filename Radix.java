@@ -13,55 +13,38 @@ public class Radix{
     MyLinkedList<Integer> sorted = new MyLinkedList<>();
     for (int i = 0 ; i < data.length; i ++) {
       buckets[10].add(data[i]);
-      //buckets[1].add(data[i]);
-      //System.out.println(buckets[10].toString());
       if (hold < Math.abs(data[i])) {
-        hold = data[i];
+        hold = data[i]; //finding the largest number
       }
     }
     //System.out.println(hold);
-    for (int s = 0; s < ((hold + "").length()); s++) {
+    for (int s = 0; s < ((hold + "").length()); s++) { //until you have looped through all the digits of the largest number
       for (int c = 0 ; c < buckets.length; c ++) {
 	if (buckets[c].size() > 0 ) {
-	  //System.out.println(buckets[c].toString());
 	  sorted.extend(buckets[c]);
-  	  //System.out.println(sorted.toString());
         }
       }
       //System.out.println(sorted.toString());
       for (int t=0; t<data.length; t++) {
-      //System.out.println(sorted.toString());
         int h = (int)sorted.removeFront();
-        System.out.println(h);
-        System.out.println(sorted.toString());
-        
-	if (h < 0) {
+	if (h < 0) { //negatives
 	  buckets[9 + ((h % count) / (count / 10))].add(h);
-          //System.out.println(sorted.toString());
         }
- 	else {
-          //System.out.println(sorted.toString());
+ 	else { //positives
           buckets[((h % count) / (count / 10)) + 10].add(h);
-          //System.out.println(((h % count) / (count / 10)) + 10);
-	  //System.out.println(sorted.toString());
 	}
-      
       }
-      count = count * 10;
+      count = count * 10; //accessing the next place
     }
     for (int f = 0 ; f < buckets.length; f ++) {
 	if (buckets[f].size() > 0 ) {
-	  //System.out.println(buckets[c].toString());
 	  sorted.extend(buckets[f]);
-  	  //System.out.println(sorted.toString());
         }
       }
     for (int x = 0 ; x < data.length; x ++) {
-        data[x] = (int)sorted.removeFront();
-        System.out.println(data[x]);
+        data[x] = (int)sorted.removeFront(); //placing it back into data
     }
 
-//System.out.println(data.toString());
      
 
   }
@@ -70,7 +53,7 @@ public class Radix{
   public static void main(String[]args){
   int[] a = {22,53,34,55,66,31,31,51,51,61,71,61,51};
     radixsort(a);
-  /*System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
+  System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
   int[]MAX_LIST = {1000000000,500,10};
   for(int MAX : MAX_LIST){
     for(int size = 31250; size < 2000001; size*=2){
@@ -101,7 +84,7 @@ public class Radix{
       System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
     }
     System.out.println();
-  }*/
+  }
   //int[] data = {-103,45,-241,861,359,-175,920,-4};
   //radixsort(data);
 }

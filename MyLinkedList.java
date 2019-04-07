@@ -32,8 +32,9 @@ public class MyLinkedList<E>{
     }
 
     public E setData(E i) {
+        E hold = data;
 	data = i;
-	return data;
+	return hold;
     }
 
     public String toString() {
