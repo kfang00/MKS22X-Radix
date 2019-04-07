@@ -88,7 +88,7 @@ public class MyLinkedList<E>{
       return "[]";
     }
     String str = "[";
-    while ((a < (size() -1)) && (current != null)) {
+    while ((a < (size() - 1)) && (current != null)) {
       str = str + current.getData() + ", ";
       current = current.next();
       a++;
@@ -252,10 +252,15 @@ public class MyLinkedList<E>{
         //in O(1) runtime, move the elements from other onto the end of this
         //The size of other is reduced to 0
         //The size of this is now the combined sizes of both original lists
-    if (size() == 0) {
+    if ((size() == 0) && (other.size() == 0)) {
+     
+    }
+    else if (size() == 0) {
       start = other.start;
       end = other.end;
       length = other.size();
+    }
+    else if (other.size() == 0){
     }
     else {
     end.setNext(other.start); //connecting the two
@@ -268,11 +273,14 @@ public class MyLinkedList<E>{
 
   public E removeFront() {
     Node hold = start;
-    if (size() > 1) {
+    //length = length - 1;
+    if (size() > 0) {
     start = start.next();
-    }
-    //start.setPrev(null);
     length = length - 1;
+    
+    }
     return hold.getData();
+    //start.setPrev(null);
+
   }
 }

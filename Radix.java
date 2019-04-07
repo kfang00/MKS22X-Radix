@@ -11,24 +11,26 @@ public class Radix{
     }
     MyLinkedList<Integer> sorted = new MyLinkedList<>();
     for (int i = 0 ; i < data.length; i ++) {
-      buckets[0].add(data[i]);
-      //System.out.println(buckets[0].toString());
+      buckets[10].add(data[i]);
+      //System.out.println(buckets[10].toString());
       if (hold < Math.abs(data[i])) {
         hold = data[i];
       }
     }
-    while ((hold / count) != 0) {
+    System.out.println(hold);
+    while ((hold / count) > 0) {
       for (int c = 0 ; c < buckets.length; c ++) {
 	if (buckets[c].size() > 0 ) {
-	  //System.out.println(buckets[c].toString());
+	  System.out.println(buckets[c].toString());
 	  sorted.extend(buckets[c]);
   	  //System.out.println(sorted.toString());
         }
       }
-      //System.out.println(buckets[20].toString());
+      //System.out.println(sorted.toString());
       while (sorted.size() > 0) {
         //System.out.println(sorted.toString());
         int h = (int)sorted.removeFront();
+        System.out.println(h);
 	if (h < 0) {
 	  buckets[9 + ((h % count) / (count / 10))].add(h);
           
@@ -40,10 +42,10 @@ public class Radix{
       }
       count = count * 10;
     }
-    for (int c = 0 ; c < buckets.length; c ++) {
-	if (buckets[c].size() > 0 ) {
+    for (int f = 0 ; f < buckets.length; f ++) {
+	if (buckets[f].size() > 0 ) {
 	  //System.out.println(buckets[c].toString());
-	  sorted.extend(buckets[c]);
+	  sorted.extend(buckets[f]);
   	  //System.out.println(sorted.toString());
         }
       }
@@ -55,9 +57,9 @@ public class Radix{
   public static void main(String[] args) {
     int[] a = {12,4345,345,2,6,1,43,345};
     radixsort(a);
-    for (int g = 0; g < a.length; g++) {
-      System.out.println(a[g]);
-    }
+    //for (int g = 0; g < a.length; g++) {
+    //  System.out.println(a[g]);
+    //}
   }
 
 }
