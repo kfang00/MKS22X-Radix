@@ -40,10 +40,10 @@ public class Radix{
           //System.out.println(sorted.toString());
         }
  	else {
-          System.out.println(sorted.toString());
+          //System.out.println(sorted.toString());
           buckets[((h % count) / (count / 10)) + 10].add(h);
-          System.out.println(((h % count) / (count / 10)) + 10);
-	  System.out.println(sorted.toString());
+          //System.out.println(((h % count) / (count / 10)) + 10);
+	  //System.out.println(sorted.toString());
 	}
       
       }
@@ -68,7 +68,7 @@ public class Radix{
 
 
   public static void main(String[]args){
-  int[] a = {12,4345,345,2,6,1,43,345, -12, 41, 23524, 24};
+  int[] a = {22,53,34,55,66,31,31,51,51,61,71,61,51};
     radixsort(a);
   /*System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
   int[]MAX_LIST = {1000000000,500,10};

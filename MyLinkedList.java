@@ -58,7 +58,7 @@ public class MyLinkedList<E>{
     length = 0;
   }
 
-  /*public boolean add(E value) {
+  public boolean add(E value) {
     if (size() == 0) {
       start.setData(value);
       //start = new Node(value, null, null); //if list is empty, then adding a node would mean start and end node would be equal to value
@@ -80,22 +80,8 @@ public class MyLinkedList<E>{
     }
     length = length + 1;
     return true;
-  }*/
-
-public boolean add(E value) {
-    if (length == 0) {
-      end = new Node(value, null, null) ;
-      start = end ;
-      length++ ;
-    }
-    else {
-      Node nextNode = new Node(value, end, null) ;
-      end.setNext(nextNode) ;
-      end = end.next() ;
-      length++ ;
-    }
-    return true ;
   }
+
 
   public String toString() {
     Node current = start;
@@ -312,3 +298,5 @@ public boolean add(E value) {
 
 
 }
+
+
