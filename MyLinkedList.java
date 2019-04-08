@@ -91,15 +91,19 @@ public class MyLinkedList<E>{
       return "[]";
     }
     String str = "[";
-    while ((a < (size() - 1)) && (current != null)) {
-      str = str + current.getData() + ", ";
+    while (a < (size()) && (current != null)) {
+      str = str + current.getData();
+      if (a != size()-1) str += ", ";
       current = current.next();
       a++;
     }
     //E hold = current.getData();
-    if (current.getData() != null) {
-	return str + current.getData() +"]";
-    }
+    //System.out.println("end: "+end.toString());
+    //System.out.println("current: "+current.toString());
+    //System.out.println("current.getData(): "+current.getData());
+    //if (current.getData() != null) {
+	  //   return str + current.getData() +"]";
+  //  }
     return str +"]";
   }
 

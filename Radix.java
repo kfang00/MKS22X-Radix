@@ -22,6 +22,7 @@ public class Radix{
       for (int c = 0 ; c < buckets.length; c ++) {
 	if (buckets[c].size() > 0 ) {
 	  sorted.extend(buckets[c]);
+          buckets[c].clear();
         }
       }
       //System.out.println(sorted.toString());
@@ -43,6 +44,7 @@ public class Radix{
       }
     for (int x = 0 ; x < data.length; x ++) {
         data[x] = (int)sorted.removeFront(); //placing it back into data
+        //System.out.println(data[x]);
     }
 
      
